@@ -1,6 +1,6 @@
-import User from './User.js';
 
-class Admin extends User {
+import User from './User.js';
+export class Admin extends User {
   constructor(userDetails) {
     super(userDetails);
     this.role = 'admin';
@@ -9,6 +9,12 @@ class Admin extends User {
   deleteUser(userToDelete) {
     console.log(`${this.name} deleted user ${userToDelete.name}`);
   }
+  
+  getUsers(admin) {
+    if (admin instanceof Admin) {
+      return User.users;
+    } else {
+      throw new Error("Access denied");
+    }
+  }
 }
-
-export default Admin;
