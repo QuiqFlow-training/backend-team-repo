@@ -13,3 +13,4 @@ export default class User {
 logOut() {
     this.isLoggedIn = false;
   }
+}
