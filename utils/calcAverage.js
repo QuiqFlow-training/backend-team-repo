@@ -19,7 +19,7 @@ function calculateAverage(numbers) {
         sum += n;
     }
     return sum/numbers.length;
-    // aaaaaaa
+
 
 }
 module.exports = {calculateAverage}
