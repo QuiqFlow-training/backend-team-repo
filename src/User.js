@@ -9,10 +9,7 @@ export default class User {
     this.profile = { bio: "", website: "" };
     User.users.push(this);
   }
-  logOut() {
+
+logOut() {
     this.isLoggedIn = false;
   }
-  updateProfile(bio, website) {
-    this.profile = { bio: bio, website: website };
-  }
-}

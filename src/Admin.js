@@ -1,11 +1,15 @@
-import User from "User.js";
 
+import User from './User.js';
 export class Admin extends User {
-  constructor(name, email, password) {
-    super(name, email, password);
-    this.role = "admin";
+  constructor(userDetails) {
+    super(userDetails);
+    this.role = 'admin';
   }
 
+  deleteUser(userToDelete) {
+    console.log(`${this.name} deleted user ${userToDelete.name}`);
+  }
+  
   getUsers(admin) {
     if (admin instanceof Admin) {
       return User.users;

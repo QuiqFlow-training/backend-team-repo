@@ -1,43 +1,37 @@
-import { Admin } from "./Admin";
-import User from "./User";
 
-describe("User class", () => {
-  beforeEach(() => {
-    // Clear users before each test
-    User.users = [];
+// write ur test cases here
+import { describe, it, expect } from '@jest/globals';
+import User from './User.js';
+
+describe('User Class', () => {
+  it('should create a user with name and email', () => {
+    const user = new User({ name: 'Test User', email: 'Ttest@email.com' });
+
+    expect(user.name).toBe('Test User');
+    expect(user.email).toBe('Ttest@email.com');
+    expect(user.isLoggedIn).toBe(false);
   });
 
-  test("should create a user and add to users list", () => {
-    const user = new User("Alice", "alice@example.com", "password123");
-    expect(User.users.length).toBe(1);
-    expect(User.users[0]).toBe(user);
-  });
+  it('Should log in the user', () => {
+    const user = new User({ name: 'Test User', email: 'Ttest@email.com' });
+    user.login();
 
-  test("should log in with correct credentials", () => {
-    const user = new User("Bob", "bob@example.com", "securepass");
-    expect(user.logIn("bob@example.com", "securepass")).toBe(true);
     expect(user.isLoggedIn).toBe(true);
   });
 
-  test("should not log in with incorrect credentials", () => {
-    const user = new User("Charlie", "charlie@example.com", "charliepw");
-    expect(user.logIn("charlie@example.com", "wrongpw")).toBe(false);
+  it('Should log out the user', () => {
+    const user = new User({ name: 'Test User', email: 'Ttest@email.com' });
+
+    user.login();
+    user.logout();
+
     expect(user.isLoggedIn).toBe(false);
   });
 
-  test("should log out", () => {
-    const user = new User("Dave", "dave@example.com", "davepw");
-    user.logIn("dave@example.com", "davepw");
-    user.logOut();
-    expect(user.isLoggedIn).toBe(false);
-  });
+  it('Should update user profile', () => {
+    const user = new User({ name: 'Test User', email: 'Ttest@email.com' });
+    user.updateProfile({ email: 'test@domain.com' });
 
-  test("should update profile", () => {
-    const user = new User("Eve", "eve@example.com", "evepw");
-    user.updateProfile("Bio text", "https://eve.me");
-    expect(user.profile).toEqual({
-      bio: "Bio text",
-      website: "https://eve.me",
-    });
+    expect(user.email).toBe('test@domain.com');
   });
 });
