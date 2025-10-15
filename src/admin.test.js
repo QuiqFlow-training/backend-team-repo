@@ -21,3 +21,4 @@ describe("Admin class", () => {
     expect(() => user.getUsers(user)).toThrow(TypeError); // user.getUsers is not a function
   });
 });
+//test
