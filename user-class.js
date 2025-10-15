@@ -61,4 +61,4 @@ class Admin extends User {
   }
 }
 
-module.exports = { User, Admin };
+export { User, Admin };

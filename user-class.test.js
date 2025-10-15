@@ -1,4 +1,5 @@
-const { User, Admin } = require("./user-class");
+
+import { User , Admin} from "./user-class";
 
 describe("User Class", () => {
   let user;
